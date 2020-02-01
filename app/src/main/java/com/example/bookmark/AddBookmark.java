@@ -55,8 +55,10 @@ public class AddBookmark extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.itemSaveBookmark) {
-            if (editTitle.getText().length() == 0 || editDesc.getText().length() == 0 || !editURL.getText().toString().contains("https://")) {
-                Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
+            if (editTitle.getText().length() == 0 || editDesc.getText().length() == 0 || editURL.getText().length() == 0) {
+                Toast.makeText(this, "Please fill in the blanks...", Toast.LENGTH_SHORT).show();
+            } else if (!editURL.getText().toString().contains("https://")) {
+                Toast.makeText(this, "Please enter a valid url (add https:// at the start of the url to make it work).", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent();
                 intent.putExtra("title", editTitle.getText().toString());
